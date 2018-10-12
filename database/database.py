@@ -1,6 +1,9 @@
 import psycopg2
 import psycopg2.extras
 import sys
+import random
+import string
+from models.musician import Musician
 
 
 class Database:
@@ -150,7 +153,7 @@ class Database:
 
     #  endregion
 
-    #  region get id by name
+    #   region get id by name
     def get_musician_id_by_name(self, name):
         self.cur.execute(f"SELECT id FROM musicians WHERE name = '{name}';")
         return self.cur.fetchone()[0]
@@ -162,6 +165,21 @@ class Database:
     def get_listener_id_by_name(self, name):
         self.cur.execute(f"SELECT id FROM listeners WHERE name = '{name}';")
         return self.cur.fetchone()[0]
-    #  endregion
+    #   endregion
+
+    #   region generate random data
+    def generate_random_musicians(self, num: int):
+        s = string.ascii_letters
+        for i in range(num):
+            name = ''.join(random.sample(s, random.randint(3, 12)))
+            number_of_members = random.randint(1, 4)
+            members = []
+            for j in range(number_of_members):
+                band_name = ''.join(random.sample(s, random.randint(3, 12)))
+                members.append(band_name)
+            musician = Musician(name, members)
+            self.create_new_musician(musician)
+
+    #   endregion
 
 

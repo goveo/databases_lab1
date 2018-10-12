@@ -34,6 +34,7 @@ db.create_new_listener(girl14years)
 # print(db.update_musician_by_id(sport_id, sports))
 
 print(db.get_musician_id_by_name("Patoka"))
+db.generate_random_musicians(10)
 
 # db.get_all_musicians()
 
