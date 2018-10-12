@@ -3,7 +3,9 @@ import psycopg2.extras
 import sys
 import random
 import string
+import datetime
 from models.musician import Musician
+from models.release import Release
 
 
 class Database:
@@ -169,17 +171,33 @@ class Database:
 
     #   region generate random data
     def generate_random_musicians(self, num: int):
-        s = string.ascii_letters
         for i in range(num):
-            name = ''.join(random.sample(s, random.randint(3, 12)))
+            name = self.__generate_random_string(3, 12)
             number_of_members = random.randint(1, 4)
             members = []
             for j in range(number_of_members):
-                band_name = ''.join(random.sample(s, random.randint(3, 12)))
+                band_name = self.__generate_random_string(3, 12)
                 members.append(band_name)
             musician = Musician(name, members)
             self.create_new_musician(musician)
 
+    def generate_random_releases(self, num: int):
+        for i in range(num):
+            name = self.__generate_random_string(3, 12)
+            date = self.__generate_random_date()
+            musician = Release(name, date)
+            self.create_new_musician(musician)
+
     #   endregion
 
+    @staticmethod
+    def __generate_random_string(min: int, max: int):
+        s = string.ascii_letters
+        return ''.join(random.sample(s, random.randint(min, max)))
 
+    @staticmethod
+    def __generate_random_date():
+        year = random.randint(1950, 2018)
+        month = random.randint(1, 12)
+        day = random.randint(1, 28)
+        return datetime(year, month, day)
