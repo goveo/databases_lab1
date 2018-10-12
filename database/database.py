@@ -6,6 +6,7 @@ import string
 import datetime
 from models.musician import Musician
 from models.release import Release
+from models.listener import Listener
 
 
 class Database:
@@ -57,8 +58,8 @@ class Database:
                             id SERIAL PRIMARY KEY, 
                             name VARCHAR NOT NULL, 
                             services VARCHAR[] NOT NULL,
-                            listenerId SERIAL NOT NULL,
-                            FOREIGN KEY (listenerId) references releases(id))""")
+                            releaseId SERIAL NOT NULL,
+                            FOREIGN KEY (releaseId) references releases(id))""")
 
     #  endregion
 
@@ -67,12 +68,14 @@ class Database:
         self.cur.execute(f"INSERT INTO musicians (name, members) VALUES ('{mus.name}', ARRAY{mus.members})")
         self.conn.commit()
 
-    def create_new_release(self, release):
-        self.cur.execute(f"INSERT INTO releases (name, date) VALUES ('{release.name}', '{release.date}')")
+    def create_new_release(self, release, musician_id: int):
+        self.cur.execute(f"""INSERT INTO releases (name, date, musicianId) 
+                             VALUES ('{release.name}', '{release.date}', '{musician_id}')""")
         self.conn.commit()
 
-    def create_new_listener(self, listener):
-        self.cur.execute(f"INSERT INTO listeners (name, services) VALUES ('{listener.name}', ARRAY{listener.services})")
+    def create_new_listener(self, listener, release_id: int):
+        self.cur.execute(f"""INSERT INTO listeners (name, services, releaseId) 
+                             VALUES ('{listener.name}', ARRAY{listener.services}, '{release_id}')""")
         self.conn.commit()
 
     #  endregion
@@ -185,10 +188,34 @@ class Database:
         for i in range(num):
             name = self.__generate_random_string(3, 12)
             date = self.__generate_random_date()
-            musician = Release(name, date)
-            self.create_new_musician(musician)
+            musician_count = self.get_musicians_count()
+            musician_id = random.randint(1, musician_count)
+            release = Release(name, date)
+            self.create_new_release(release, musician_id)
+
+    def generate_random_listeners(self, num: int):
+        for i in range(num):
+            name = self.__generate_random_string(3, 12)
+            number_of_services = random.randint(1, 4)
+            services = []
+            for j in range(number_of_services):
+                band_name = self.__generate_random_string(3, 12)
+                services.append(band_name)
+            listener = Listener(name, services)
+            releases_count = self.get_releases_count()
+            release_id = random.randint(1, releases_count)
+            self.create_new_listener(listener, release_id)
 
     #   endregion
+
+    def get_musicians_count(self):
+        self.cur.execute(f"SELECT COUNT (*) FROM musicians;")
+        return self.cur.fetchone()[0]
+
+    def get_releases_count(self):
+        self.cur.execute(f"SELECT COUNT (*) FROM releases;")
+        return self.cur.fetchone()[0]
+
 
     @staticmethod
     def __generate_random_string(min: int, max: int):
@@ -200,4 +227,4 @@ class Database:
         year = random.randint(1950, 2018)
         month = random.randint(1, 12)
         day = random.randint(1, 28)
-        return datetime(year, month, day)
+        return datetime.datetime(year, month, day)

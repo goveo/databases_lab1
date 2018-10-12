@@ -26,15 +26,17 @@ db.create_listeners_table()
 
 db.create_new_musician(patokaband)
 db.create_new_musician(sportsportsport)
-db.create_new_release(release)
-db.create_new_listener(girl14years)
+db.create_new_release(release, 1)
+db.create_new_listener(girl14years, 1)
 #
 # sport_id = db.get_musician_by_name("sportsportsport")["id"]
 # print(f'sport_id : {sport_id}')
 # print(db.update_musician_by_id(sport_id, sports))
 
 print(db.get_musician_id_by_name("Patoka"))
-db.generate_random_musicians(10)
+db.generate_random_releases(10)
+db.generate_random_listeners(10)
+# db.generate_random_listeners(10)
 
 # db.get_all_musicians()
 
