@@ -29,6 +29,7 @@ class Database:
         # self.cur.execute(f" DROP TABLE *")
         # print('Dropped!')
 
+    #  region create table
     def create_musicians_table(self):
         self.cur.execute("DROP TABLE IF EXISTS musicians CASCADE")
         self.cur.execute("""CREATE TABLE musicians(
@@ -54,6 +55,9 @@ class Database:
                             listenerId SERIAL NOT NULL,
                             FOREIGN KEY (listenerId) references releases(id))""")
 
+    #  endregion
+
+    #  region create
     def create_new_musician(self, mus):
         self.cur.execute(f"INSERT INTO musicians (name, members) VALUES ('{mus.name}', ARRAY{mus.members})")
         self.conn.commit()
@@ -66,6 +70,9 @@ class Database:
         self.cur.execute(f"INSERT INTO listeners (name, services) VALUES ('{listener.name}', ARRAY{listener.services})")
         self.conn.commit()
 
+    #  endregion
+
+    #  region get all
     def get_all_musicians(self):
         self.cur.execute("SELECT * FROM musicians")
         return self.cur.fetchall()
@@ -78,6 +85,9 @@ class Database:
         self.cur.execute("SELECT * FROM listener")
         return self.cur.fetchall()
 
+    #  endregion
+
+    #  region get by name
     def get_musician_by_name(self, name):
         self.cur.execute(f"SELECT * FROM musicians WHERE name = '{name}'")
         return self.cur.fetchall()[0]
@@ -90,6 +100,9 @@ class Database:
         self.cur.execute(f"SELECT * FROM listener WHERE name = '{name}'")
         return self.cur.fetchall()[0]
 
+    #  endregion
+
+    #  region get by id
     def get_musician_by_id(self, id):
         self.cur.execute(f"SELECT * FROM musician WHERE id = '{id}'")
         return self.cur.fetchone()[0]
@@ -102,6 +115,9 @@ class Database:
         self.cur.execute(f"SELECT * FROM listener WHERE id = '{id}'")
         return self.cur.fetchone()[0]
 
+    #  endregion
+
+    #  region update by id
     def update_musician_by_id(self, id, new_musician):
         self.cur.execute(f"""UPDATE musicians SET (name, members) = ('{new_musician.name}', ARRAY{new_musician.members})
                              WHERE id = {id};""")
@@ -116,3 +132,36 @@ class Database:
         self.cur.execute(f"""UPDATE releases SET (name, services) = ('{new_listener.name}', ARRAY{new_listener.services})
                              WHERE id = {id};""")
         self.conn.commit()
+
+    #  endregion
+
+    #  region delete by id
+    def delete_musician_by_id(self, id):
+        self.cur.execute(f"DELETE FROM musicians CASCADE WHERE id = '{id}';")
+        self.conn.commit()
+
+    def delete_release_by_id(self, id):
+        self.cur.execute(f"DELETE FROM releases WHERE id = '{id}';")
+        self.conn.commit()
+
+    def delete_listener_by_id(self, id):
+        self.cur.execute(f"DELETE FROM listeners WHERE id = '{id}';")
+        self.conn.commit()
+
+    #  endregion
+
+    #  region get id by name
+    def get_musician_id_by_name(self, name):
+        self.cur.execute(f"SELECT id FROM musicians WHERE name = '{name}';")
+        return self.cur.fetchone()[0]
+
+    def get_release_id_by_name(self, name):
+        self.cur.execute(f"SELECT id FROM releases WHERE name = '{name}';")
+        return self.cur.fetchone()[0]
+
+    def get_listener_id_by_name(self, name):
+        self.cur.execute(f"SELECT id FROM listeners WHERE name = '{name}';")
+        return self.cur.fetchone()[0]
+    #  endregion
+
+

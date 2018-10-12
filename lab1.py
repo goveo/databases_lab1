@@ -6,9 +6,9 @@
 import datetime
 
 from database import database
-from musician import Musician
-from release import Release
-from listener import Listener
+from models.musician import Musician
+from models.release import Release
+from models.listener import Listener
 
 db = database.Database('127.0.0.1', 'postgres')
 db.connect('postgres', '1')
@@ -28,11 +28,12 @@ db.create_new_musician(patokaband)
 db.create_new_musician(sportsportsport)
 db.create_new_release(release)
 db.create_new_listener(girl14years)
+#
+# sport_id = db.get_musician_by_name("sportsportsport")["id"]
+# print(f'sport_id : {sport_id}')
+# print(db.update_musician_by_id(sport_id, sports))
 
-sport_id = db.get_musician_by_name("sportsportsport")["id"]
-print(f'sport_id : {sport_id}')
-print(db.update_musician_by_id(sport_id, sports))
-
+print(db.get_musician_id_by_name("Patoka"))
 
 # db.get_all_musicians()
 

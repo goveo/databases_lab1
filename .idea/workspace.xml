@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6fd7d6d9-4b2f-42e7-859a-c42ea01cac83" name="Default" comment="" />
+    <list default="true" id="6fd7d6d9-4b2f-42e7-859a-c42ea01cac83" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listener.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/listener.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/musician.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/musician.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/release.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/release.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/databases_lab1$lab1.coverage" NAME="lab1 Coverage Results" MODIFIED="1539379155154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="108482676">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.28" value="2" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="243" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="243" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="lab1.py" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lab1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="190">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="e#82#97#0" expanded="true" />
               </folding>
@@ -23,59 +53,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.py" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="117" column="26" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
+            <state relative-caret-position="226">
+              <caret line="154" column="51" selection-start-line="154" selection-start-column="51" selection-end-line="154" selection-end-column="51" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <element signature="e#897#1075#0" />
-                <element signature="e#1216#1503#0" />
-                <element signature="e#1673#2064#0" />
-                <element signature="e#1553#1679#0" />
-                <element signature="e#1736#1862#0" />
-                <element signature="e#2477#2602#0" />
-                <element signature="e#2623#2696#0" />
-                <element signature="e#2747#2825#0" />
-                <element signature="e#2866#2943#0" />
-                <element signature="e#2992#3096#0" />
+                <element signature="e#811#833#0" />
+                <element signature="e#853#1136#0" />
+                <element signature="e#1183#1582#0" />
+                <element signature="e#1630#2031#0" />
+                <element signature="e#2083#2099#0" />
+                <element signature="e#2081#2208#0" />
+                <element signature="e#2261#2386#0" />
+                <element signature="e#2441#2580#0" />
+                <element signature="e#2672#2689#0" />
+                <element signature="e#2623#2701#0" />
+                <element signature="e#2743#2820#0" />
+                <element signature="e#2863#2940#0" />
+                <element signature="e#2946#2967#0" />
                 <element signature="e#3147#3250#0" />
                 <element signature="e#3302#3405#0" />
-                <element signature="e#3444#3543#0" />
-                <element signature="e#3589#3688#0" />
-                <element signature="e#3748#3847#0" />
-                <element signature="e#3912#4108#0" />
-                <element signature="e#4184#4386#0" />
-                <element signature="e#4418#4603#0" />
+                <element signature="e#3438#3457#0" />
+                <element signature="e#3599#3698#0" />
+                <element signature="e#3746#3845#0" />
+                <element signature="e#3851#3873#0" />
+                <element signature="e#3910#4099#0" />
+                <element signature="e#4162#4339#0" />
+                <element signature="e#4404#4594#0" />
+                <element signature="e#4600#4622#0" />
+                <element signature="e#4645#4741#0" />
+                <element signature="e#4791#4878#0" />
+                <element signature="e#4929#5017#0" />
+                <marker date="1539379127246" expanded="true" signature="5552:5561" ph="..." />
+                <marker date="1539379127246" expanded="true" signature="5712:5721" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="musician.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/musician.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="release.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/release.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="listener.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/listener.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="14" selection-start-column="14" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -95,6 +108,9 @@
       <find>drop</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -105,10 +121,16 @@
         <option value="$PROJECT_DIR$/musician.py" />
         <option value="$PROJECT_DIR$/musician/musician.py" />
         <option value="$PROJECT_DIR$/listener.py" />
-        <option value="$PROJECT_DIR$/lab1.py" />
         <option value="$PROJECT_DIR$/database/database.py" />
+        <option value="$PROJECT_DIR$/lab1.py" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="117" />
@@ -126,17 +148,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="bd_lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bd_lab1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bd_lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bd_lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bd_lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="databases_lab1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="databases_lab1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -145,16 +158,18 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/database" />
       <recent name="$PROJECT_DIR$/musician" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -182,11 +197,15 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
@@ -207,35 +226,47 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="696" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15189873" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38938054" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1560606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" weight="0.34336284" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924242" visible="true" weight="0.34982333" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286219" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49924242" weight="0.34275618" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5007576" side_tool="true" weight="0.34982333" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3286219" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="4" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="12" />
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/database/__init__.py">
@@ -248,21 +279,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/musician.py">
+    <entry file="file://$PROJECT_DIR$/models/musician.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/release.py">
+    <entry file="file://$PROJECT_DIR$/models/release.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="13" selection-start-column="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/listener.py">
+    <entry file="file://$PROJECT_DIR$/models/listener.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="14" selection-start-column="14" selection-end-column="14" />
@@ -271,36 +302,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/database.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="117" column="26" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
+        <state relative-caret-position="226">
+          <caret line="154" column="51" selection-start-line="154" selection-start-column="51" selection-end-line="154" selection-end-column="51" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#897#1075#0" />
-            <element signature="e#1216#1503#0" />
-            <element signature="e#1673#2064#0" />
-            <element signature="e#1553#1679#0" />
-            <element signature="e#1736#1862#0" />
-            <element signature="e#2477#2602#0" />
-            <element signature="e#2623#2696#0" />
-            <element signature="e#2747#2825#0" />
-            <element signature="e#2866#2943#0" />
-            <element signature="e#2992#3096#0" />
+            <element signature="e#811#833#0" />
+            <element signature="e#853#1136#0" />
+            <element signature="e#1183#1582#0" />
+            <element signature="e#1630#2031#0" />
+            <element signature="e#2083#2099#0" />
+            <element signature="e#2081#2208#0" />
+            <element signature="e#2261#2386#0" />
+            <element signature="e#2441#2580#0" />
+            <element signature="e#2672#2689#0" />
+            <element signature="e#2623#2701#0" />
+            <element signature="e#2743#2820#0" />
+            <element signature="e#2863#2940#0" />
+            <element signature="e#2946#2967#0" />
             <element signature="e#3147#3250#0" />
             <element signature="e#3302#3405#0" />
-            <element signature="e#3444#3543#0" />
-            <element signature="e#3589#3688#0" />
-            <element signature="e#3748#3847#0" />
-            <element signature="e#3912#4108#0" />
-            <element signature="e#4184#4386#0" />
-            <element signature="e#4418#4603#0" />
+            <element signature="e#3438#3457#0" />
+            <element signature="e#3599#3698#0" />
+            <element signature="e#3746#3845#0" />
+            <element signature="e#3851#3873#0" />
+            <element signature="e#3910#4099#0" />
+            <element signature="e#4162#4339#0" />
+            <element signature="e#4404#4594#0" />
+            <element signature="e#4600#4622#0" />
+            <element signature="e#4645#4741#0" />
+            <element signature="e#4791#4878#0" />
+            <element signature="e#4929#5017#0" />
+            <marker date="1539379127246" expanded="true" signature="5552:5561" ph="..." />
+            <marker date="1539379127246" expanded="true" signature="5712:5721" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lab1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="190">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="e#82#97#0" expanded="true" />
           </folding>
