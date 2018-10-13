@@ -5,6 +5,7 @@ import sys
 class MusiciansList(npyscreen.MultiLineAction):
     def __init__(self, *args, **keywords):
         super(MusiciansList, self).__init__(*args, **keywords)
+        self.name = "Musicians"
         self.add_handlers({
             "^A": self.when_add_record,
             "^D": self.when_delete_record
@@ -14,11 +15,12 @@ class MusiciansList(npyscreen.MultiLineAction):
         return "%s \t| %s \t| %s" % (vl['id'], vl['name'], vl['members'])
 
     def actionHighlighted(self, act_on_this, keypress):
-        # self.parent.parentApp.switchForm(f"{act_on_this.upper()}LIST")
-        ...
+        self.parent.parentApp.getForm('MUSICIANEDIT').value = act_on_this["id"]
+        self.parent.parentApp.switchForm('MUSICIANEDIT')
 
     def when_add_record(self, *args, **keywords):
-        ...
+        self.parent.parentApp.getForm('MUSICIANEDIT').value = None
+        self.parent.parentApp.switchForm('MUSICIANEDIT')
 
     def when_delete_record(self, *args, **keywords):
         try:

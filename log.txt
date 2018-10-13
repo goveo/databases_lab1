@@ -1,1 +1,1 @@
-vl : [2, 'sportsportsport', ['sportsman1', 'sportsman2', 'sportsman3']]
+record : [1, 'Patoka', ['Skiper', 'Kovalski', 'Rico', 'Private']]

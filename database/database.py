@@ -94,7 +94,7 @@ class Database:
         return self.cur.fetchall()
 
     def get_all_listeners(self):
-        self.cur.execute("SELECT * FROM listener")
+        self.cur.execute("SELECT * FROM listeners")
         return self.cur.fetchall()
 
     #  endregion
@@ -109,23 +109,23 @@ class Database:
         return self.cur.fetchall()[0]
 
     def get_listener_by_name(self, name):
-        self.cur.execute(f"SELECT * FROM listener WHERE name = '{name}'")
+        self.cur.execute(f"SELECT * FROM listeners WHERE name = '{name}'")
         return self.cur.fetchall()[0]
 
     #  endregion
 
     #  region get by id
     def get_musician_by_id(self, id):
-        self.cur.execute(f"SELECT * FROM musician WHERE id = '{id}'")
-        return self.cur.fetchone()[0]
+        self.cur.execute(f"SELECT * FROM musicians WHERE id = '{id}'")
+        return self.cur.fetchone()
 
     def get_release_by_id(self, id):
         self.cur.execute(f"SELECT * FROM releases WHERE id = '{id}'")
-        return self.cur.fetchone()[0]
+        return self.cur.fetchone()
 
     def get_listener_by_id(self, id):
-        self.cur.execute(f"SELECT * FROM listener WHERE id = '{id}'")
-        return self.cur.fetchone()[0]
+        self.cur.execute(f"SELECT * FROM listeners WHERE id = '{id}'")
+        return self.cur.fetchone()
 
     #  endregion
 
@@ -141,7 +141,7 @@ class Database:
         self.conn.commit()
 
     def update_listener_by_id(self, id, new_listener):
-        self.cur.execute(f"""UPDATE releases SET (name, services) = ('{new_listener.name}', ARRAY{new_listener.services})
+        self.cur.execute(f"""UPDATE listeners SET (name, services) = ('{new_listener.name}', ARRAY{new_listener.services})
                              WHERE id = {id};""")
         self.conn.commit()
 

@@ -12,7 +12,7 @@ from models.release import Release
 from models.listener import Listener
 from tui import MainList
 from tui import MusiciansList
-from tui import Error
+from tui import MusicianEdit
 
 
 class MusiciansDBApp(npyscreen.NPSAppManaged):
@@ -36,9 +36,9 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.database.create_new_release(release, 1)
         self.database.create_new_listener(girl14years, 1)
 
-        self.addForm("MAIN", MainList.MainListDisplay, name='Main menu')
-        self.addForm("MUSICIANSLIST", MusiciansList.MusiciansListDisplay, name='Musicians')
-        self.addForm("ERROR", Error.Error, name='')
+        self.addForm("MAIN", MainList.MainListDisplay, title='Main menu')
+        self.addForm("MUSICIANSLIST", MusiciansList.MusiciansListDisplay, title='Musicians')
+        self.addForm("MUSICIANEDIT", MusicianEdit.MusicianEdit)
 
     def onCleanExit(self):
         self.database.close()
