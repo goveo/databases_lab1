@@ -50,7 +50,9 @@ class Database:
                             name VARCHAR NOT NULL, 
                             date DATE NOT NULL,
                             musicianId SERIAL NOT NULL,
-                            FOREIGN KEY (musicianId) references musicians(id))""")
+                            FOREIGN KEY (musicianId) references musicians(id) 
+                            ON DELETE CASCADE 
+                            ON UPDATE CASCADE)""")
 
     def create_listeners_table(self):
         self.cur.execute("DROP TABLE IF EXISTS listeners")
@@ -59,7 +61,9 @@ class Database:
                             name VARCHAR NOT NULL, 
                             services VARCHAR[] NOT NULL,
                             releaseId SERIAL NOT NULL,
-                            FOREIGN KEY (releaseId) references releases(id))""")
+                            FOREIGN KEY (releaseId) references releases(id)
+                            ON DELETE CASCADE 
+                            ON UPDATE CASCADE)""")
 
     #  endregion
 
@@ -149,11 +153,11 @@ class Database:
         self.conn.commit()
 
     def delete_release_by_id(self, id):
-        self.cur.execute(f"DELETE FROM releases WHERE id = '{id}';")
+        self.cur.execute(f"DELETE FROM releases CASCADE WHERE id = '{id}';")
         self.conn.commit()
 
     def delete_listener_by_id(self, id):
-        self.cur.execute(f"DELETE FROM listeners WHERE id = '{id}';")
+        self.cur.execute(f"DELETE FROM listeners CASCADE WHERE id = '{id}';")
         self.conn.commit()
 
     #  endregion
@@ -216,6 +220,20 @@ class Database:
         self.cur.execute(f"SELECT COUNT (*) FROM releases;")
         return self.cur.fetchone()[0]
 
+    def get_listeners_count(self):
+        self.cur.execute(f"SELECT COUNT (*) FROM listeners;")
+        return self.cur.fetchone()[0]
+
+    def get_count_of_an_entity(self, entity):
+        entity = entity.lower()
+        if entity == "musicians":
+            return self.get_musicians_count()
+        elif entity == "releases":
+            return self.get_releases_count()
+        elif entity == "listeners":
+            return self.get_listeners_count()
+        else:
+            return 0
 
     @staticmethod
     def __generate_random_string(min: int, max: int):
