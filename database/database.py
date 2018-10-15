@@ -31,10 +31,6 @@ class Database:
         self.cur.close()
         self.conn.close()
 
-    # def drop(self):
-        # self.cur.execute(f" DROP TABLE *")
-        # print('Dropped!')
-
     #  region create table
     def create_musicians_table(self):
         self.cur.execute("DROP TABLE IF EXISTS musicians CASCADE")
@@ -49,13 +45,14 @@ class Database:
                             id SERIAL PRIMARY KEY, 
                             name VARCHAR NOT NULL, 
                             date DATE NOT NULL,
+                            style VARCHAR NOT NULL,
                             musicianId SERIAL NOT NULL,
                             FOREIGN KEY (musicianId) references musicians(id) 
                             ON DELETE CASCADE 
                             ON UPDATE CASCADE)""")
 
     def create_listeners_table(self):
-        self.cur.execute("DROP TABLE IF EXISTS listeners")
+        self.cur.execute("DROP TABLE IF EXISTS listeners CASCADE")
         self.cur.execute("""CREATE TABLE listeners(
                             id SERIAL PRIMARY KEY, 
                             name VARCHAR NOT NULL, 
@@ -65,6 +62,13 @@ class Database:
                             ON DELETE CASCADE 
                             ON UPDATE CASCADE)""")
 
+    def create_listeners_releases_table(self):
+        self.cur.execute("DROP TABLE IF EXISTS listeners_releases")
+        self.cur.execute("""CREATE TABLE listeners_releases(
+                                    listenerId INTEGER,
+                                    releaseId INTEGER,
+                                    FOREIGN KEY (listenerId) references listeners(id),
+                                    FOREIGN KEY (releaseId) references releases(id))""")
     #  endregion
 
     #  region create
@@ -72,14 +76,14 @@ class Database:
         self.cur.execute(f"INSERT INTO musicians (name, members) VALUES ('{mus.name}', ARRAY{mus.members})")
         self.conn.commit()
 
-    def create_new_release(self, release, musician_id: int):
-        self.cur.execute(f"""INSERT INTO releases (name, date, musicianId) 
-                             VALUES ('{release.name}', '{release.date}', '{musician_id}')""")
+    def create_new_release(self, release):
+        self.cur.execute(f"""INSERT INTO releases (name, date, style, musicianId) 
+                             VALUES ('{release.name}', '{release.date}', '{release.style}','{release.musician_id}')""")
         self.conn.commit()
 
-    def create_new_listener(self, listener, release_id: int):
-        self.cur.execute(f"""INSERT INTO listeners (name, services, releaseId) 
-                             VALUES ('{listener.name}', ARRAY{listener.services}, '{release_id}')""")
+    def create_new_listener(self, listener):
+        self.cur.execute(f"""INSERT INTO listeners (name, services) 
+                             VALUES ('{listener.name}', ARRAY{listener.services})""")
         self.conn.commit()
 
     #  endregion
@@ -102,7 +106,10 @@ class Database:
     #  region get by name
     def get_musician_by_name(self, name):
         self.cur.execute(f"SELECT * FROM musicians WHERE name = '{name}'")
-        return self.cur.fetchall()[0]
+        try:
+            return self.cur.fetchall()[0]
+        except Exception as e:
+            return False
 
     def get_release_by_name(self, name):
         self.cur.execute(f"SELECT * FROM releases WHERE name = '{name}'")
@@ -131,17 +138,20 @@ class Database:
 
     #  region update by id
     def update_musician_by_id(self, id, new_musician):
-        self.cur.execute(f"""UPDATE musicians SET (name, members) = ('{new_musician.name}', ARRAY{new_musician.members})
+        self.cur.execute(f"""UPDATE musicians 
+                             SET (name, members) = ('{new_musician.name}', ARRAY{new_musician.members})
                              WHERE id = {id};""")
         self.conn.commit()
 
     def update_release_by_id(self, id, new_release):
-        self.cur.execute(f"""UPDATE releases SET (name, date) = ('{new_release.name}', '{new_release.date}')
+        self.cur.execute(f"""UPDATE releases 
+                             SET (name, date, style, musicianId) = ('{new_release.name}', '{new_release.date}', '{new_release.style}', '{new_release.musician_id}')
                              WHERE id = {id};""")
         self.conn.commit()
 
     def update_listener_by_id(self, id, new_listener):
-        self.cur.execute(f"""UPDATE listeners SET (name, services) = ('{new_listener.name}', ARRAY{new_listener.services})
+        self.cur.execute(f"""UPDATE listeners 
+                             SET (name, services) = ('{new_listener.name}', ARRAY{new_listener.services})
                              WHERE id = {id};""")
         self.conn.commit()
 
@@ -192,9 +202,10 @@ class Database:
         for i in range(num):
             name = self.__generate_random_string(3, 12)
             date = self.__generate_random_date()
+            style = self.__generate_random_string(3, 12)
             musician_count = self.get_musicians_count()
             musician_id = random.randint(1, musician_count)
-            release = Release(name, date)
+            release = Release(name, date, style)
             self.create_new_release(release, musician_id)
 
     def generate_random_listeners(self, num: int):
@@ -211,6 +222,11 @@ class Database:
             self.create_new_listener(listener, release_id)
 
     #   endregion
+
+    def add_release_to_listener(self, listener_id, release_id):
+        self.cur.execute(f"""INSERT INTO listeners_releases (listenerId, releaseId) 
+                             VALUES ('{listener_id}', '{release_id}')""")
+        self.conn.commit()
 
     def get_musicians_count(self):
         self.cur.execute(f"SELECT COUNT (*) FROM musicians;")

@@ -4,11 +4,9 @@
     <list default="true" id="6fd7d6d9-4b2f-42e7-859a-c42ea01cac83" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tui/Error.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tui/MainList.py" beforeDir="false" afterPath="$PROJECT_DIR$/tui/MainList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tui/MusiciansList.py" beforeDir="false" afterPath="$PROJECT_DIR$/tui/MusiciansList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/musician.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/musician.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/release.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/release.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,27 +31,27 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="46" />
-          <entry key="py" value="5433" />
+          <entry key="py" value="8229" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="46" />
-          <entry key="Python" value="5425" />
-          <entry key="SQL" value="8" />
+          <entry key="Python" value="8210" />
+          <entry key="SQL" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="LICENSE" value="1" />
-          <entry key="py" value="13" />
+          <entry key="py" value="17" />
           <entry key="txt" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="13" />
+          <entry key="Python" value="17" />
         </counts>
       </usages-collector>
     </session>
@@ -63,12 +61,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="38" column="53" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="53" />
+            <state relative-caret-position="216">
+              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
               <folding>
                 <element signature="e#82#97#0" expanded="true" />
-                <marker date="1539449013950" expanded="true" signature="542:547" ph="..." />
-                <marker date="1539449013950" expanded="true" signature="1653:1656" ph="..." />
+                <marker date="1539620673425" expanded="true" signature="453:2097" ph="..." />
+                <marker date="1539620673425" expanded="true" signature="599:604" ph="..." />
+                <marker date="1539620673425" expanded="true" signature="2095:2097" ph="..." />
               </folding>
             </state>
           </provider>
@@ -77,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tui/MusiciansList.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="-36">
+              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
                 <marker date="1539447927454" expanded="true" signature="370:450" ph="..." />
@@ -89,11 +88,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tui/MusicianEdit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+            <state relative-caret-position="100">
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tui/ReleaseEdit.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-98">
+              <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="29" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -102,36 +113,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tui/MainList.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-              <folding>
-                <marker date="1539449123750" expanded="true" signature="516:517" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+            <state relative-caret-position="181">
+              <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1539447508158" expanded="true" signature="6062:6071" ph="..." />
-                <marker date="1539447508158" expanded="true" signature="6222:6231" ph="..." />
+                <element signature="n#musicians#0" />
+                <element signature="e#3167#3184#0" />
+                <element signature="e#5357#5379#0" />
+                <element signature="e#5841#5866#0" />
+                <element signature="e#7922#8013#0" />
+                <element signature="e#8057#8147#0" />
+                <element signature="e#8192#8283#0" />
+                <element signature="e#8339#8639#0" />
+                <element signature="e#8721#8812#0" />
+                <element signature="e#8874#9032#0" />
+                <marker date="1539620719388" expanded="true" signature="2408:2829" ph="..." />
+                <marker date="1539620719388" expanded="true" signature="6694:6703" ph="..." />
+                <marker date="1539620719388" expanded="true" signature="6854:6863" ph="..." />
+                <marker date="1539620719388" expanded="true" signature="8629:8821" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/listener.py">
+        <entry file="file://$PROJECT_DIR$/tui/ReleasesList.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+            <state relative-caret-position="360">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -140,7 +151,30 @@
         <entry file="file://$PROJECT_DIR$/models/release.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="13" selection-start-column="6" selection-end-column="13" />
+              <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tui/MainList.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="21" column="52" selection-start-line="14" selection-start-column="4" selection-end-line="21" selection-end-column="52" />
+              <folding>
+                <marker date="1539539610579" expanded="true" signature="194:200" ph="..." />
+                <marker date="1539539610579" expanded="true" signature="516:517" ph="..." />
+                <marker date="1539539610579" expanded="true" signature="1283:1289" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/listener.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -148,8 +182,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/musician.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="54">
+              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -178,6 +212,12 @@
       <find>self.name</find>
       <find>f&quot;record : {record}&quot;</find>
       <find>try</find>
+      <find>Musician</find>
+      <find>wgMem</find>
+      <find>date</find>
+      <find>wgMusicianId</find>
+      <find>textbox</find>
+      <find>Release</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -198,12 +238,16 @@
         <option value="$PROJECT_DIR$/tui/App.py" />
         <option value="$PROJECT_DIR$/tui/Error.py" />
         <option value="$PROJECT_DIR$/tui/MusicianCreate.py" />
-        <option value="$PROJECT_DIR$/database/database.py" />
-        <option value="$PROJECT_DIR$/tui/MusiciansList.py" />
         <option value="$PROJECT_DIR$/tui/MusicianEdit.py" />
         <option value="$PROJECT_DIR$/tui/Hints.py" />
-        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/tui/MusiciansList.py" />
         <option value="$PROJECT_DIR$/tui/MainList.py" />
+        <option value="$PROJECT_DIR$/models/musician.py" />
+        <option value="$PROJECT_DIR$/tui/ReleasesList.py" />
+        <option value="$PROJECT_DIR$/models/release.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/database/database.py" />
+        <option value="$PROJECT_DIR$/tui/ReleaseEdit.py" />
       </list>
     </option>
   </component>
@@ -220,7 +264,7 @@
     <option name="height" value="593" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -239,13 +283,43 @@
             <path>
               <item name="databases_lab1" type="b2602c69:ProjectViewProjectNode" />
               <item name="databases_lab1" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="databases_lab1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="databases_lab1" type="462c0819:PsiDirectoryNode" />
               <item name="tui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="databases_lab1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="databases_lab1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="database" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="databases_lab1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="models" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="databases_lab1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="tui" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,15 +327,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tui" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/database" />
       <recent name="$PROJECT_DIR$/musician" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tui" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -361,9 +435,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/-1144841201/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -391,39 +462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/listener.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/release.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/musician.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/database.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1539447508158" expanded="true" signature="6062:6071" ph="..." />
-            <marker date="1539447508158" expanded="true" signature="6222:6231" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tui/Hints.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -431,22 +469,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="38" column="53" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="53" />
-          <folding>
-            <element signature="e#82#97#0" expanded="true" />
-            <marker date="1539449013950" expanded="true" signature="542:547" ph="..." />
-            <marker date="1539449013950" expanded="true" signature="1653:1656" ph="..." />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/database/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tui/MusiciansList.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="-36">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
             <marker date="1539447927454" expanded="true" signature="370:450" ph="..." />
@@ -456,20 +485,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tui/MainList.py">
+    <entry file="file://$PROJECT_DIR$/models/musician.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <marker date="1539449123750" expanded="true" signature="516:517" ph="..." />
-          </folding>
+        <state relative-caret-position="54">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/listener.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tui/MusicianEdit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        <state relative-caret-position="100">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tui/MainList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="52" selection-start-line="14" selection-start-column="4" selection-end-line="21" selection-end-column="52" />
+          <folding>
+            <marker date="1539539610579" expanded="true" signature="194:200" ph="..." />
+            <marker date="1539539610579" expanded="true" signature="516:517" ph="..." />
+            <marker date="1539539610579" expanded="true" signature="1283:1289" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tui/ReleasesList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/release.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+          <folding>
+            <element signature="e#82#97#0" expanded="true" />
+            <marker date="1539620673425" expanded="true" signature="453:2097" ph="..." />
+            <marker date="1539620673425" expanded="true" signature="599:604" ph="..." />
+            <marker date="1539620673425" expanded="true" signature="2095:2097" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="n#musicians#0" />
+            <element signature="e#3167#3184#0" />
+            <element signature="e#5357#5379#0" />
+            <element signature="e#5841#5866#0" />
+            <element signature="e#7922#8013#0" />
+            <element signature="e#8057#8147#0" />
+            <element signature="e#8192#8283#0" />
+            <element signature="e#8339#8639#0" />
+            <element signature="e#8721#8812#0" />
+            <element signature="e#8874#9032#0" />
+            <marker date="1539620719388" expanded="true" signature="2408:2829" ph="..." />
+            <marker date="1539620719388" expanded="true" signature="6694:6703" ph="..." />
+            <marker date="1539620719388" expanded="true" signature="6854:6863" ph="..." />
+            <marker date="1539620719388" expanded="true" signature="8629:8821" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tui/ReleaseEdit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98">
+          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="29" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>

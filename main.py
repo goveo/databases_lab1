@@ -13,6 +13,8 @@ from models.listener import Listener
 from tui import MainList
 from tui import MusiciansList
 from tui import MusicianEdit
+from tui import ReleasesList
+from tui import ReleaseEdit
 
 
 class MusiciansDBApp(npyscreen.NPSAppManaged):
@@ -25,20 +27,26 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.database.create_musicians_table()
         self.database.create_releases_table()
         self.database.create_listeners_table()
+        self.database.create_listeners_releases_table()
 
         patokaband = Musician(name='Patoka', members=["Skiper", "Kovalski", "Rico", "Private"])
         sportsportsport = Musician(name='sportsportsport', members=["sportsman1", "sportsman2", "sportsman3"])
-        release = Release(name='govno', date=datetime.datetime(year=1999, month=1, day=7))
+        release = Release(name='goveo', date=datetime.datetime(year=1999, month=1, day=7), style="emo", musician_id=1)
+        release2 = Release(name='goveoLP', date=datetime.datetime(year=2018, month=1, day=7), style="emo", musician_id=1)
         girl14years = Listener(name='Anna Siryk', services=["soundcloud", "bandcamp"])
 
         self.database.create_new_musician(patokaband)
         self.database.create_new_musician(sportsportsport)
-        self.database.create_new_release(release, 1)
-        self.database.create_new_listener(girl14years, 1)
+        self.database.create_new_release(release)
+        self.database.create_new_release(release2)
+        self.database.create_new_listener(girl14years)
 
         self.addForm("MAIN", MainList.MainListDisplay, title='Main menu')
         self.addForm("MUSICIANSLIST", MusiciansList.MusiciansListDisplay, title='Musicians')
         self.addForm("MUSICIANEDIT", MusicianEdit.MusicianEdit)
+        self.addForm("RELEASESLIST", ReleasesList.ReleasesListDisplay)
+        self.addForm("RELEASEEDIT", ReleaseEdit.ReleaseEdit)
+
 
     def onCleanExit(self):
         self.database.close()
