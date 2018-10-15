@@ -12,6 +12,9 @@ class ReleaseEdit(npyscreen.ActionForm):
         self.wgDate = self.add(npyscreen.TitleDateCombo, name="Date:", value="")
         self.wgMusicianName = self.add(npyscreen.TitleSelectOne, name="Author:")
         self.is_error = False
+        self.add_handlers({
+            "^Q": self.exit
+        })
 
 
     def beforeEditing(self):
@@ -60,6 +63,9 @@ class ReleaseEdit(npyscreen.ActionForm):
 
     def on_cancel(self):
         self.is_error = False
+        self.parentApp.switchFormPrevious()
+
+    def exit(self, *args, **keywords):
         self.parentApp.switchFormPrevious()
 
     def spawn_notify_popup(self, entity):

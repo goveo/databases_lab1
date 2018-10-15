@@ -223,10 +223,19 @@ class Database:
 
     #   endregion
 
-    def add_release_to_listener(self, listener_id, release_id):
+    def add_listener_release(self, listener_id, release_id):
         self.cur.execute(f"""INSERT INTO listeners_releases (listenerId, releaseId) 
                              VALUES ('{listener_id}', '{release_id}')""")
         self.conn.commit()
+
+    def get_listeners_id_by_release_id(self, release_id):
+        self.cur.execute(f"SELECT * FROM listeners_releases WHERE releaseId = '{release_id}'")
+        return self.cur.fetchall()["listenerid"]
+
+    def get_releases_id_by_listener_id(self, listener_id):
+        self.cur.execute(f"SELECT * FROM listeners_releases WHERE listener_id = '{listener_id}'")
+        return self.cur.fetchall()["releaseid"]
+
 
     def get_musicians_count(self):
         self.cur.execute(f"SELECT COUNT (*) FROM musicians;")
@@ -262,3 +271,10 @@ class Database:
         month = random.randint(1, 12)
         day = random.randint(1, 28)
         return datetime.datetime(year, month, day)
+
+
+    def full_text_musician_search(self, query):
+        self.cur.execute(f"""SELECT * FROM musicians WHERE to_tsvector(name) @@ plainto_tsquery('{query}')""")
+        return self.cur.fetchall()
+
+    

@@ -7,6 +7,9 @@ class MusicianEdit(npyscreen.ActionForm):
         self.value = None
         self.wgName = self.add(npyscreen.TitleText, name="Name:",)
         self.wgMembers = self.add(npyscreen.TitleText, name="Members:")
+        self.add_handlers({
+            "^Q": self.exit
+        })
 
     def beforeEditing(self):
         if self.value:
@@ -33,4 +36,7 @@ class MusicianEdit(npyscreen.ActionForm):
         self.parentApp.switchFormPrevious()
 
     def on_cancel(self):
+        self.parentApp.switchFormPrevious()
+
+    def exit(self, *args, **keywords):
         self.parentApp.switchFormPrevious()

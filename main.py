@@ -15,6 +15,8 @@ from tui import MusiciansList
 from tui import MusicianEdit
 from tui import ReleasesList
 from tui import ReleaseEdit
+from tui import ListenersList
+# from tui import ListenersEdit
 
 
 class MusiciansDBApp(npyscreen.NPSAppManaged):
@@ -30,22 +32,34 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.database.create_listeners_releases_table()
 
         patokaband = Musician(name='Patoka', members=["Skiper", "Kovalski", "Rico", "Private"])
-        sportsportsport = Musician(name='sportsportsport', members=["sportsman1", "sportsman2", "sportsman3"])
+        sportband = Musician(name='I love sport', members=["Skiper", "Kovalski", "Rico", "Private"])
+        sportsband = Musician(name='sports', members=["Skiper", "Kovalski", "Rico", "Private"])
+        sportsportsport = Musician(name='sport sport sport', members=["sportsman1", "sportsman2", "sportsman3"])
         release = Release(name='goveo', date=datetime.datetime(year=1999, month=1, day=7), style="emo", musician_id=1)
         release2 = Release(name='goveoLP', date=datetime.datetime(year=2018, month=1, day=7), style="emo", musician_id=1)
         girl14years = Listener(name='Anna Siryk', services=["soundcloud", "bandcamp"])
+        girl14years2 = Listener(name='Anna Siryk 2', services=["soundcloud", "bandcamp", "vk"])
 
         self.database.create_new_musician(patokaband)
+        self.database.create_new_musician(sportband)
+        self.database.create_new_musician(sportsband)
         self.database.create_new_musician(sportsportsport)
         self.database.create_new_release(release)
         self.database.create_new_release(release2)
+
         self.database.create_new_listener(girl14years)
+        self.database.delete_listener_by_id(1)
+        self.database.create_new_listener(girl14years2)
+
+        raise(Exception(self.database.full_text_musician_search('sports')))
 
         self.addForm("MAIN", MainList.MainListDisplay, title='Main menu')
         self.addForm("MUSICIANSLIST", MusiciansList.MusiciansListDisplay, title='Musicians')
         self.addForm("MUSICIANEDIT", MusicianEdit.MusicianEdit)
         self.addForm("RELEASESLIST", ReleasesList.ReleasesListDisplay)
         self.addForm("RELEASEEDIT", ReleaseEdit.ReleaseEdit)
+        self.addForm("LISTENERSLIST", ListenersList.ListenersListDisplay)
+        # self.addForm("LISTENEREDIT", ListenerEdit.ListenerEdit)
 
 
     def onCleanExit(self):
