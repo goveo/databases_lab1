@@ -65,6 +65,8 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.database.create_new_listener(girl14years)
         self.database.delete_listener_by_id(1)
         self.database.create_new_listener(girl14years2)
+        self.database.add_listener_release(2, 1)
+        self.database.add_listener_release(2, 2)
 
         # raise(Exception(self.database.full_text_musician_search('sports')))
         # raise(Exception(self.database.search_videos()))

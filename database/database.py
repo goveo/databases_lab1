@@ -64,10 +64,7 @@ class Database:
                             id SERIAL PRIMARY KEY, 
                             name VARCHAR NOT NULL, 
                             services VARCHAR[] NOT NULL,
-                            releaseId SERIAL NOT NULL,
-                            FOREIGN KEY (releaseId) references releases(id)
-                            ON DELETE CASCADE 
-                            ON UPDATE CASCADE)""")
+                            releaseId SERIAL NOT NULL)""")
 
     def create_listeners_releases_table(self):
         self.cur.execute("DROP TABLE IF EXISTS listeners_releases")
@@ -250,17 +247,17 @@ class Database:
         self.conn.commit()
 
     def get_listeners_id_by_release_id(self, release_id):
-        self.cur.execute(f"SELECT * FROM listeners_releases WHERE releaseId = '{release_id}'")
-        return self.cur.fetchall()["listenerid"]
+        self.cur.execute(f"SELECT listenerid FROM listeners_releases WHERE releaseId = '{release_id}'")
+        return self.cur.fetchall()
 
     def get_releases_id_by_listener_id(self, listener_id):
-        self.cur.execute(f"SELECT * FROM listeners_releases WHERE listener_id = '{listener_id}'")
-        return self.cur.fetchall()["releaseid"]
+        self.cur.execute(f"SELECT releaseid FROM listeners_releases WHERE listenerId = '{listener_id}'")
+        return self.cur.fetchall()
 
 
     def get_musicians_count(self):
         self.cur.execute(f"SELECT COUNT (*) FROM musicians;")
-        return self.cur.fetchone()[0]
+        return self.cur.fetchone()
 
     def get_releases_count(self):
         self.cur.execute(f"SELECT COUNT (*) FROM releases;")

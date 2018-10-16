@@ -11,7 +11,12 @@ class ReleasesList(npyscreen.MultiLineAction):
         })
 
     def display_value(self, vl):
-        return "%s \t| %s \t| %s\t| %s" % (vl['id'], vl['name'], vl['date'], vl['style'])
+        return "{:^3}|{:^18}|{:^12}|{:^14}|{:^5}|{:^20}|".format(str(vl[0]),
+                                                           str(vl[1]),
+                                                           str(vl[2]),
+                                                           str(vl[3]),
+                                                           str(vl[4]),
+                                                           str(vl[6]))
 
     def actionHighlighted(self, act_on_this, keypress):
         self.parent.parentApp.getForm('RELEASEEDIT').value = act_on_this["id"]
@@ -44,7 +49,13 @@ class ReleasesListDisplay(npyscreen.FormMutt):
         self.update_list()
 
     def update_list(self):
-        to_display = self.parentApp.database.get_all_releases()
+        releases = self.parentApp.database.get_all_releases()
+        # raise(Exception(releases))
+        to_display = []
+        for release in releases:
+            author = self.parentApp.database.get_musician_by_id(release["musicianid"])
+            release.append(author["name"])
+            to_display.append(release)
         self.wMain.values = to_display
         if len(to_display) == 0:
             self.parentApp.switchForm("MAIN")
