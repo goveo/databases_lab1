@@ -16,7 +16,7 @@ from tui import MusicianEdit
 from tui import ReleasesList
 from tui import ReleaseEdit
 from tui import ListenersList
-# from tui import ListenersEdit
+from tui import ListenerEdit
 
 
 class MusiciansDBApp(npyscreen.NPSAppManaged):
@@ -75,7 +75,7 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.addForm("RELEASESLIST", ReleasesList.ReleasesListDisplay)
         self.addForm("RELEASEEDIT", ReleaseEdit.ReleaseEdit)
         self.addForm("LISTENERSLIST", ListenersList.ListenersListDisplay)
-        # self.addForm("LISTENEREDIT", ListenerEdit.ListenerEdit)
+        self.addForm("LISTENEREDIT", ListenerEdit.ListenerEdit)
 
 
     def onCleanExit(self):
