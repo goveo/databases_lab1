@@ -4,7 +4,7 @@ import sys
 import random
 import string
 import datetime
-from models.musician import Musician
+from models.musician import Musician, Status
 from models.release import Release
 from models.listener import Listener
 
@@ -15,6 +15,7 @@ class Database:
         self.cur = None
         self.host = host
         self.name = name
+
 
     def connect(self, user, password):
         try:
@@ -33,10 +34,15 @@ class Database:
 
     #  region create table
     def create_musicians_table(self):
+        statuses = Status.get_all()
+        self.cur.execute(f"""DROP TYPE IF EXISTS status CASCADE""")
+        self.cur.execute(f"""CREATE TYPE status AS 
+                             ENUM ('{statuses[0]}', '{statuses[1]}', '{statuses[2]}', '{statuses[3]}');""")
         self.cur.execute("DROP TABLE IF EXISTS musicians CASCADE")
         self.cur.execute("""CREATE TABLE musicians(
                             id SERIAL PRIMARY KEY NOT NULL, 
                             name VARCHAR NOT NULL, 
+                            status STATUS NOT NULL,
                             members VARCHAR[] NOT NULL)""")
 
     def create_releases_table(self):
@@ -46,6 +52,7 @@ class Database:
                             name VARCHAR NOT NULL, 
                             date DATE NOT NULL,
                             style VARCHAR NOT NULL,
+                            isVideo BOOLEAN NOT NULL,
                             musicianId SERIAL NOT NULL,
                             FOREIGN KEY (musicianId) references musicians(id) 
                             ON DELETE CASCADE 
@@ -73,12 +80,17 @@ class Database:
 
     #  region create
     def create_new_musician(self, mus):
-        self.cur.execute(f"INSERT INTO musicians (name, members) VALUES ('{mus.name}', ARRAY{mus.members})")
+        self.cur.execute(f"""INSERT INTO musicians (name, members, status) 
+                             VALUES ('{mus.name}', ARRAY{mus.members}, '{mus.status}')""")
         self.conn.commit()
 
     def create_new_release(self, release):
-        self.cur.execute(f"""INSERT INTO releases (name, date, style, musicianId) 
-                             VALUES ('{release.name}', '{release.date}', '{release.style}','{release.musician_id}')""")
+        self.cur.execute(f"""INSERT INTO releases (name, date, style, isVideo, musicianId) 
+                             VALUES ('{release.name}', 
+                                     '{release.date}', 
+                                     '{release.style}',
+                                     '{release.is_video}',
+                                     '{release.musician_id}')""")
         self.conn.commit()
 
     def create_new_listener(self, listener):
@@ -90,15 +102,15 @@ class Database:
 
     #  region get all
     def get_all_musicians(self):
-        self.cur.execute("SELECT * FROM musicians")
+        self.cur.execute("SELECT * FROM musicians ORDER BY id")
         return self.cur.fetchall()
 
     def get_all_releases(self):
-        self.cur.execute("SELECT * FROM releases")
+        self.cur.execute("SELECT * FROM releases ORDER BY id")
         return self.cur.fetchall()
 
     def get_all_listeners(self):
-        self.cur.execute("SELECT * FROM listeners")
+        self.cur.execute("SELECT * FROM listeners ORDER BY id")
         return self.cur.fetchall()
 
     #  endregion
@@ -139,13 +151,20 @@ class Database:
     #  region update by id
     def update_musician_by_id(self, id, new_musician):
         self.cur.execute(f"""UPDATE musicians 
-                             SET (name, members) = ('{new_musician.name}', ARRAY{new_musician.members})
+                             SET (name, status, members) = ('{new_musician.name}', 
+                                                            '{new_musician.status}',
+                                                             ARRAY{new_musician.members})
                              WHERE id = {id};""")
         self.conn.commit()
 
     def update_release_by_id(self, id, new_release):
         self.cur.execute(f"""UPDATE releases 
-                             SET (name, date, style, musicianId) = ('{new_release.name}', '{new_release.date}', '{new_release.style}', '{new_release.musician_id}')
+                             SET (name, date, style, isVideo, musicianId) = 
+                             ('{new_release.name}', 
+                              '{new_release.date}', 
+                              '{new_release.style}', 
+                              '{new_release.is_video}', 
+                              '{new_release.musician_id}')
                              WHERE id = {id};""")
         self.conn.commit()
 
@@ -190,12 +209,13 @@ class Database:
     def generate_random_musicians(self, num: int):
         for i in range(num):
             name = self.__generate_random_string(3, 12)
+            status = random.choice(Status.get_all())
             number_of_members = random.randint(1, 4)
             members = []
             for j in range(number_of_members):
                 band_name = self.__generate_random_string(3, 12)
                 members.append(band_name)
-            musician = Musician(name, members)
+            musician = Musician(name=name, status=status, members=members)
             self.create_new_musician(musician)
 
     def generate_random_releases(self, num: int):
@@ -203,10 +223,11 @@ class Database:
             name = self.__generate_random_string(3, 12)
             date = self.__generate_random_date()
             style = self.__generate_random_string(3, 12)
+            is_video = random.choice([True, False])
             musician_count = self.get_musicians_count()
             musician_id = random.randint(1, musician_count)
-            release = Release(name, date, style)
-            self.create_new_release(release, musician_id)
+            release = Release(name, date, style, is_video, musician_id)
+            self.create_new_release(release)
 
     def generate_random_listeners(self, num: int):
         for i in range(num):
@@ -260,6 +281,8 @@ class Database:
         else:
             return 0
 
+
+
     @staticmethod
     def __generate_random_string(min: int, max: int):
         s = string.ascii_letters
@@ -272,9 +295,10 @@ class Database:
         day = random.randint(1, 28)
         return datetime.datetime(year, month, day)
 
-
     def full_text_musician_search(self, query):
         self.cur.execute(f"""SELECT * FROM musicians WHERE to_tsvector(name) @@ plainto_tsquery('{query}')""")
         return self.cur.fetchall()
 
-    
+    def search_videos(self, query):
+        self.cur.execute(f"""SELECT * FROM releases WHERE isVideo = '{query}'""")
+        return self.cur.fetchall()

@@ -7,7 +7,7 @@ import datetime
 import npyscreen
 
 from database.database import Database
-from models.musician import Musician
+from models.musician import Musician, Status
 from models.release import Release
 from models.listener import Listener
 from tui import MainList
@@ -30,13 +30,28 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.database.create_releases_table()
         self.database.create_listeners_table()
         self.database.create_listeners_releases_table()
-
-        patokaband = Musician(name='Patoka', members=["Skiper", "Kovalski", "Rico", "Private"])
-        sportband = Musician(name='I love sport', members=["Skiper", "Kovalski", "Rico", "Private"])
-        sportsband = Musician(name='sports', members=["Skiper", "Kovalski", "Rico", "Private"])
-        sportsportsport = Musician(name='sport sport sport', members=["sportsman1", "sportsman2", "sportsman3"])
-        release = Release(name='goveo', date=datetime.datetime(year=1999, month=1, day=7), style="emo", musician_id=1)
-        release2 = Release(name='goveoLP', date=datetime.datetime(year=2018, month=1, day=7), style="emo", musician_id=1)
+        patokaband = Musician(name='Patoka',
+                              status=Status.BAND.value,
+                              members=["Skiper", "Kovalski", "Rico", "Private"])
+        sportband = Musician(name='I love sport',
+                             status=Status.BAND.value,
+                             members=["Skiper", "Kovalski", "Rico", "Private"])
+        sportsband = Musician(name='sports',
+                              status=Status.BAND.value,
+                              members=["Skiper", "Kovalski", "Rico", "Private"])
+        sportsportsport = Musician(name='sport sport sport',
+                                   status=Status.BAND.value,
+                                   members=["sportsman1", "sportsman2", "sportsman3"])
+        release = Release(name='goveo',
+                          date=datetime.datetime(year=1999, month=1, day=7),
+                          style="emo",
+                          is_video=True,
+                          musician_id=1)
+        release2 = Release(name='goveo2',
+                           date=datetime.datetime(year=2018, month=1, day=7),
+                           style="emo",
+                           is_video=False,
+                           musician_id=1)
         girl14years = Listener(name='Anna Siryk', services=["soundcloud", "bandcamp"])
         girl14years2 = Listener(name='Anna Siryk 2', services=["soundcloud", "bandcamp", "vk"])
 
@@ -51,7 +66,8 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.database.delete_listener_by_id(1)
         self.database.create_new_listener(girl14years2)
 
-        raise(Exception(self.database.full_text_musician_search('sports')))
+        # raise(Exception(self.database.full_text_musician_search('sports')))
+        # raise(Exception(self.database.search_videos()))
 
         self.addForm("MAIN", MainList.MainListDisplay, title='Main menu')
         self.addForm("MUSICIANSLIST", MusiciansList.MusiciansListDisplay, title='Musicians')

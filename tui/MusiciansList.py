@@ -12,7 +12,10 @@ class MusiciansList(npyscreen.MultiLineAction):
         })
 
     def display_value(self, vl):
-        return "%s \t| %s \t| %s" % (vl['id'], vl['name'], vl['members'])
+        return "{:^3}|{:^20}|{:^12}|{:^40}|".format(str(vl['id']),
+                                                   str(vl['name']),
+                                                   str(vl['status']),
+                                                   str(', '.join(vl['members'])))
 
     def actionHighlighted(self, act_on_this, keypress):
         self.parent.parentApp.getForm('MUSICIANEDIT').value = act_on_this["id"]
