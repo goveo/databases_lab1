@@ -6,6 +6,10 @@ class MainList(npyscreen.MultiLineAction):
         super(MainList, self).__init__(*args, **keywords)
         self.name = "Main List"
 
+    def display_value(self, vl):
+        return "|{:^76}|".format(str(vl))
+
+
     def actionHighlighted(self, act_on_this, keypress):
         if self.parent.parentApp.database.get_count_of_an_entity(act_on_this) == 0:
             self.spawn_notify_popup(act_on_this)

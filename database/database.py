@@ -43,6 +43,7 @@ class Database:
                             name VARCHAR NOT NULL, 
                             status STATUS NOT NULL,
                             members VARCHAR[] NOT NULL)""")
+        self.conn.commit()
 
     def create_releases_table(self):
         self.cur.execute("DROP TABLE IF EXISTS releases CASCADE")
@@ -56,6 +57,7 @@ class Database:
                             FOREIGN KEY (musicianId) references musicians(id) 
                             ON DELETE CASCADE 
                             ON UPDATE CASCADE)""")
+        self.conn.commit()
 
     def create_listeners_table(self):
         self.cur.execute("DROP TABLE IF EXISTS listeners CASCADE")
@@ -64,6 +66,7 @@ class Database:
                             name VARCHAR NOT NULL, 
                             services VARCHAR[] NOT NULL,
                             releaseId SERIAL NOT NULL)""")
+        self.conn.commit()
 
     def create_listeners_releases_table(self):
         self.cur.execute("DROP TABLE IF EXISTS listeners_releases")
@@ -72,6 +75,7 @@ class Database:
                                     releaseId INTEGER,
                                     FOREIGN KEY (listenerId) references listeners(id),
                                     FOREIGN KEY (releaseId) references releases(id))""")
+        self.conn.commit()
     #  endregion
 
     #  region create

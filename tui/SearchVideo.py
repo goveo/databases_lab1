@@ -21,14 +21,6 @@ class SearchVideo(npyscreen.ActionForm):
 
     def on_ok(self):
             self.wgResult.values = self.parentApp.database.search_videos(self.wgIsVideo.value)
-        #
-        # if self.wgRelease.value:
-        #
-        #     self.parentApp.switchFormPrevious()
-        # else:
-        #     # TODO make popup
-        #     self.is_error = True
-
 
     def on_cancel(self):
         self.parentApp.switchFormPrevious()
