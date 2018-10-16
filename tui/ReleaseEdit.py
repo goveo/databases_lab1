@@ -17,8 +17,6 @@ class ReleaseEdit(npyscreen.ActionForm):
             "^Q": self.exit
         })
 
-
-
     def beforeEditing(self):
         musicians = self.parentApp.database.get_all_musicians()
         names = list(map(lambda x: x['name'], musicians))

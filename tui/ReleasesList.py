@@ -7,16 +7,21 @@ class ReleasesList(npyscreen.MultiLineAction):
         self.name = "Releases"
         self.add_handlers({
             "^A": self.when_add_record,
-            "^D": self.when_delete_record
+            "^D": self.when_delete_record,
+            "^S": self.search_by_video
         })
 
     def display_value(self, vl):
         return "{:^3}|{:^18}|{:^12}|{:^14}|{:^5}|{:^20}|".format(str(vl[0]),
-                                                           str(vl[1]),
-                                                           str(vl[2]),
-                                                           str(vl[3]),
-                                                           str(vl[4]),
-                                                           str(vl[6]))
+                                                                 str(vl[1]),
+                                                                 str(vl[2]),
+                                                                 str(vl[3]),
+                                                                 str(vl[4]),
+                                                                 str(vl[6]))
+
+    def search_by_video(self, *args, **keywords):
+        self.parent.parentApp.getForm('SEARCH_VIDEO').value = None
+        self.parent.parentApp.switchForm('SEARCH_VIDEO')
 
     def actionHighlighted(self, act_on_this, keypress):
         self.parent.parentApp.getForm('RELEASEEDIT').value = act_on_this["id"]

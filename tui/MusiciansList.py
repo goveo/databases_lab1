@@ -8,7 +8,9 @@ class MusiciansList(npyscreen.MultiLineAction):
         self.name = "Musicians"
         self.add_handlers({
             "^A": self.when_add_record,
-            "^D": self.when_delete_record
+            "^D": self.when_delete_record,
+            "^S": self.search_status,
+            "^F": self.fulltext_search
         })
 
     def display_value(self, vl):
@@ -33,6 +35,14 @@ class MusiciansList(npyscreen.MultiLineAction):
             self.parent.wMain.values = []
             self.parent.wMain.display()
         self.parent.update_list()
+
+    def search_status(self, *args, **keywords):
+        self.parent.parentApp.getForm('SEARCH_STATUS').value = None
+        self.parent.parentApp.switchForm('SEARCH_STATUS')
+
+    def fulltext_search(self, *args, **keywords):
+            self.parent.parentApp.getForm('FULLTEXT_SEARCH').value = None
+            self.parent.parentApp.switchForm('FULLTEXT_SEARCH')
 
 
 class MusiciansListDisplay(npyscreen.FormMutt):

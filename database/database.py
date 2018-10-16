@@ -16,7 +16,6 @@ class Database:
         self.host = host
         self.name = name
 
-
     def connect(self, user, password):
         try:
             self.conn = psycopg2.connect(host=self.host, dbname=self.name, user=user, password=password)
@@ -254,6 +253,19 @@ class Database:
         self.cur.execute(f"SELECT releaseid FROM listeners_releases WHERE listenerId = '{listener_id}'")
         return self.cur.fetchall()
 
+    def get_releases_by_listener_id(self, listener_id):
+        releases_id = self.get_releases_id_by_listener_id(listener_id)
+        data = []
+        for i in releases_id:
+            data.append(self.get_release_by_id(i[0]))
+        return data
+
+    def update_all_subscriptions_by_listener_id(self, listener_id, releases_id):
+        self.cur.execute(f"DELETE FROM listeners_releases WHERE listenerId = '{listener_id}'")
+        for release_id in releases_id:
+            self.cur.execute(f"""INSERT INTO listeners_releases (listenerId, releaseId) 
+                                         VALUES ('{listener_id}', '{release_id}')""")
+        self.conn.commit()
 
     def get_musicians_count(self):
         self.cur.execute(f"SELECT COUNT (*) FROM musicians;")
@@ -296,6 +308,10 @@ class Database:
         self.cur.execute(f"""SELECT * FROM musicians WHERE to_tsvector(name) @@ plainto_tsquery('{query}')""")
         return self.cur.fetchall()
 
-    def search_videos(self, query):
+    def search_videos(self, query: bool):
         self.cur.execute(f"""SELECT * FROM releases WHERE isVideo = '{query}'""")
+        return self.cur.fetchall()
+
+    def search_status(self, status: Status):
+        self.cur.execute(f"""SELECT * FROM musicians WHERE status = '{status}'""")
         return self.cur.fetchall()

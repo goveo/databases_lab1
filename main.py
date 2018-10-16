@@ -17,6 +17,10 @@ from tui import ReleasesList
 from tui import ReleaseEdit
 from tui import ListenersList
 from tui import ListenerEdit
+from tui import SubscribeToRelease
+from tui import SearchStatus
+from tui import SearchVideo
+from tui import FulltextSearch
 
 
 class MusiciansDBApp(npyscreen.NPSAppManaged):
@@ -37,7 +41,7 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
                              status=Status.BAND.value,
                              members=["Skiper", "Kovalski", "Rico", "Private"])
         sportsband = Musician(name='sports',
-                              status=Status.BAND.value,
+                              status=Status.ORCHESTRA.value,
                               members=["Skiper", "Kovalski", "Rico", "Private"])
         sportsportsport = Musician(name='sport sport sport',
                                    status=Status.BAND.value,
@@ -78,6 +82,10 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.addForm("RELEASEEDIT", ReleaseEdit.ReleaseEdit)
         self.addForm("LISTENERSLIST", ListenersList.ListenersListDisplay)
         self.addForm("LISTENEREDIT", ListenerEdit.ListenerEdit)
+        self.addForm("SUBSCRIBE_TO_RELEASE", SubscribeToRelease.SubscribeToRelease)
+        self.addForm("SEARCH_STATUS", SearchStatus.SearchStatus)
+        self.addForm("SEARCH_VIDEO", SearchVideo.SearchVideo)
+        self.addForm("FULLTEXT_SEARCH", FulltextSearch.FulltextSearch)
 
 
     def onCleanExit(self):

@@ -8,8 +8,14 @@ class ListenersList(npyscreen.MultiLineAction):
         self.name = "Listeners"
         self.add_handlers({
             "^A": self.when_add_record,
-            "^D": self.when_delete_record
+            "^D": self.when_delete_record,
+            "^R": self.subscribe_to_release
         })
+
+    def subscribe_to_release(self, *args, **keywords):
+        cur_id = self.values[self.cursor_line]["id"]
+        self.parent.parentApp.getForm('SUBSCRIBE_TO_RELEASE').value = cur_id
+        self.parent.parentApp.switchForm('SUBSCRIBE_TO_RELEASE')
 
     def display_value(self, vl):
         return "{:^3}|{:^15}|{:^26}|{:^30}|".format(str(vl[0]),
