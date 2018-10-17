@@ -319,3 +319,7 @@ class Database:
     def search_status(self, status: Status):
         self.cur.execute(f"""SELECT * FROM musicians WHERE status = '{status}'""")
         return self.cur.fetchall()
+
+    def full_text_style_search(self, query):
+        self.cur.execute(f"""SELECT * FROM releases WHERE id NOT IN (SELECT id FROM releases WHERE to_tsvector(style) @@ plainto_tsquery('{query}'))""")
+        return self.cur.fetchall()
