@@ -36,6 +36,7 @@ class ListenersList(npyscreen.MultiLineAction):
             cur_id = self.values[self.cursor_line]["id"]
             self.parent.parentApp.database.delete_listener_by_id(cur_id)
         except Exception as e:
+            raise(e)
             self.parent.wMain.values = []
             self.parent.wMain.display()
         self.parent.update_list()

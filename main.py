@@ -1,8 +1,3 @@
-#  terminal:
-#  pip install psycopg2-binary
-#  sudo -u postgres psql
-# \password
-
 import datetime
 import npyscreen
 
@@ -30,52 +25,7 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
 
     def onStart(self):
         self.database.connect('postgres', '1')
-        self.database.create_musicians_table()
-        self.database.create_releases_table()
-        self.database.create_listeners_table()
-        self.database.create_listeners_releases_table()
-
-        patokaband = Musician(name='Patoka',
-                              status=Status.BAND.value,
-                              members=["Skiper", "Kovalski", "Rico", "Private"])
-        sportband = Musician(name='I love sport',
-                             status=Status.BAND.value,
-                             members=["Skiper", "Kovalski", "Rico", "Private"])
-        sportsband = Musician(name='sports',
-                              status=Status.ORCHESTRA.value,
-                              members=["Skiper", "Kovalski", "Rico", "Private"])
-        sportsportsport = Musician(name='sport sport sport',
-                                   status=Status.BAND.value,
-                                   members=["sportsman1", "sportsman2", "sportsman3"])
-        release = Release(name='goveo',
-                          date=datetime.datetime(year=1999, month=1, day=7),
-                          style="Grunge",
-                          is_video=True,
-                          musician_id=1)
-        release2 = Release(name='goveo2',
-                           date=datetime.datetime(year=2018, month=1, day=7),
-                           style="Garage rock",
-                           is_video=False,
-                           musician_id=1)
-        listener1 = Listener(name='Anna Siryk', services=["soundcloud", "bandcamp"])
-        listener2 = Listener(name='Simple Listener', services=["soundcloud", "vk"])
-        listener3 = Listener(name='Listener3', services=["soundcloud"])
-
-        self.database.create_new_musician(patokaband)
-        self.database.create_new_musician(sportband)
-        self.database.create_new_musician(sportsband)
-        self.database.create_new_musician(sportsportsport)
-        self.database.create_new_release(release)
-        self.database.create_new_release(release2)
-
-        self.database.create_new_listener(listener1)
-        self.database.create_new_listener(listener2)
-        self.database.create_new_listener(listener3)
-        self.database.add_listener_release(1, 1)
-        self.database.add_listener_release(2, 1)
-        self.database.add_listener_release(1, 2)
-
-        raise(Exception(self.database.full_text_style_search("Grunge")))
+        # self.fill_database()
 
         self.addForm("MAIN", MainList.MainListDisplay, title='Main menu')
         self.addForm("MUSICIANSLIST", MusiciansList.MusiciansListDisplay, title='Musicians')
@@ -89,12 +39,66 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
         self.addForm("SEARCH_VIDEO", SearchVideo.SearchVideo)
         self.addForm("FULLTEXT_SEARCH", FulltextSearch.FulltextSearch)
 
-
     def onCleanExit(self):
         self.database.close()
 
+    def fill_database(self):
+        self.database.create_musicians_table()
+        self.database.create_releases_table()
+        self.database.create_listeners_table()
+        self.database.create_listeners_releases_table()
+
+        patokaband = Musician(name='Patoka',
+                              status=Status.BAND.value,
+                              members=["Skiper", "Kovalski", "Rico"])
+        sportband = Musician(name='Lets sport',
+                             status=Status.BAND.value,
+                             members=["Skiper", "Kovalski", "Private"])
+        sportsband = Musician(name='sports',
+                              status=Status.ORCHESTRA.value,
+                              members=["Skiper", "Kovalski", "Rico", "Private"])
+        sportsportsport = Musician(name='sport sport sport',
+                                   status=Status.BAND.value,
+                                   members=["sportsman1", "sportsman2", "sportsman3"])
+        release1 = Release(name='Release1',
+                          date=datetime.datetime(year=1999, month=1, day=7),
+                          style="Pop",
+                          is_video=True,
+                          musician_id=3)
+        release2 = Release(name='Release2',
+                           date=datetime.datetime(year=2018, month=1, day=7),
+                           style="Garage rock",
+                           is_video=False,
+                           musician_id=1)
+        release3 = Release(name='Release3',
+                           date=datetime.datetime(year=2018, month=1, day=7),
+                           style="Rock",
+                           is_video=False,
+                           musician_id=3)
+        listener1 = Listener(name='Anna Siryk', services=["soundcloud", "bandcamp"])
+        listener2 = Listener(name='Simple Listener', services=["soundcloud", "vk"])
+        listener3 = Listener(name='Listener3', services=["soundcloud"])
+
+        self.database.create_new_musician(patokaband)
+        self.database.create_new_musician(sportband)
+        self.database.create_new_musician(sportsband)
+        self.database.create_new_musician(sportsportsport)
+        # self.database.generate_random_musicians(100)
+
+        self.database.create_new_release(release1)
+        self.database.create_new_release(release2)
+        self.database.create_new_release(release3)
+
+        self.database.create_new_listener(listener1)
+        self.database.create_new_listener(listener2)
+        self.database.create_new_listener(listener3)
+
+        self.database.add_listener_release(1, 1)
+        self.database.add_listener_release(2, 1)
+        self.database.add_listener_release(1, 2)
 
 if __name__ == '__main__':
 
     MyApp = MusiciansDBApp()
     MyApp.run()
+

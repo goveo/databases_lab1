@@ -23,9 +23,6 @@ class Database:
         except Exception as e:
             print('Error %s' % e)
             sys.exit(1)
-        print('connected!')
-        print(f' host : {self.host}')
-        print(f' name : {self.name}')
 
     def close(self):
         self.cur.close()
@@ -178,15 +175,20 @@ class Database:
 
     #  region delete by id
     def delete_musician_by_id(self, id):
-        self.cur.execute(f"DELETE FROM musicians CASCADE WHERE id = '{id}';")
+        # self.cur.execute(f"""DELETE FROM listeners_releases WHERE releaseId IN (
+        #                         SEARCH id FROM releases WHERE id = '{id}'
+        #                      )""")
+        self.cur.execute(f"DELETE FROM musicians WHERE id = '{id}';")
         self.conn.commit()
 
     def delete_release_by_id(self, id):
-        self.cur.execute(f"DELETE FROM releases CASCADE WHERE id = '{id}';")
+        self.cur.execute(f"DELETE FROM listeners_releases WHERE releaseId = '{id}'")
+        self.cur.execute(f"DELETE FROM releases WHERE id = '{id}';")
         self.conn.commit()
 
     def delete_listener_by_id(self, id):
-        self.cur.execute(f"DELETE FROM listeners CASCADE WHERE id = '{id}';")
+        self.cur.execute(f"DELETE FROM listeners_releases WHERE listenerId = '{id}'")
+        self.cur.execute(f"DELETE FROM listeners WHERE id = '{id}';")
         self.conn.commit()
 
     #  endregion
@@ -294,8 +296,6 @@ class Database:
         else:
             return 0
 
-
-
     @staticmethod
     def __generate_random_string(min: int, max: int):
         s = string.ascii_letters
@@ -308,8 +308,9 @@ class Database:
         day = random.randint(1, 28)
         return datetime.datetime(year, month, day)
 
-    def full_text_musician_search(self, query):
-        self.cur.execute(f"""SELECT * FROM musicians WHERE to_tsvector(name) @@ plainto_tsquery('{query}')""")
+    def full_text_musician_search(self, word):
+        self.cur.execute(f"""SELECT * FROM musicians 
+                             WHERE to_tsvector(name) @@ plainto_tsquery('{word}')""")
         return self.cur.fetchall()
 
     def search_videos(self, query: bool):
@@ -320,6 +321,22 @@ class Database:
         self.cur.execute(f"""SELECT * FROM musicians WHERE status = '{status}'""")
         return self.cur.fetchall()
 
-    def full_text_style_search(self, query):
-        self.cur.execute(f"""SELECT * FROM releases WHERE id NOT IN (SELECT id FROM releases WHERE to_tsvector(style) @@ plainto_tsquery('{query}'))""")
+    def full_text_style_search(self, word):
+        self.cur.execute(f"""SELECT * FROM releases 
+                             WHERE id NOT IN (
+                                SELECT id FROM releases 
+                                WHERE to_tsvector(style) @@ plainto_tsquery('{word}')
+                             )""")
         return self.cur.fetchall()
+
+    def delete_all_releases_by_musician_id(self, musician_id):
+        # self.cur.execute(f"""DELETE FROM releases_listeners WHERE releaseId in (
+        #                         SELECT id FROM releases WHERE musicianId = '{musician_id}'
+        #                      );""")
+        self.cur.execute(f"DELETE FROM releases CASCADE WHERE musicianId = '{musician_id}';")
+
+        self.conn.commit()
+
+    def delete_all_musician_listeners(self, listener_id):
+        self.cur.execute(f"DELETE FROM listenres CASCADE WHERE musicianId = '{musician_id}';")
+        self.conn.commit()

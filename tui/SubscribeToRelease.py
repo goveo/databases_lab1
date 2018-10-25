@@ -49,22 +49,9 @@ class SubscribeToRelease(npyscreen.ActionForm):
                 releases_id.append(self.wgReleases.values[release][0])
 
             self.parentApp.database.update_all_subscriptions_by_listener_id(self.value, releases_id)
-
-            # for i in releases:
-            #     releases_id.append(i['id'])
-
-                # try:
-                #     self.parentApp.database.delete_all_subscriptions_by_listener_id(self.value)
-                #     self.parentApp.database.add_listener_release(int(self.value), int(release["id"]))
-                # except:
-                #     ...
-
-            self.parentApp.switchFormPrevious()
         else:
-            # TODO make popup
-            self.is_error = True
-            self.spawn_notify_popup(self.wgMusicianName.value)
-
+            self.parentApp.database.update_all_subscriptions_by_listener_id(self.value, [])
+        self.parentApp.switchFormPrevious()
 
     def on_cancel(self):
         self.parentApp.switchFormPrevious()

@@ -1,1 +1,0 @@
-record : [1, 'Patoka', ['Skiper', 'Kovalski', 'Rico', 'Private']]
