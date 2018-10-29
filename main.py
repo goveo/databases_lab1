@@ -25,7 +25,7 @@ class MusiciansDBApp(npyscreen.NPSAppManaged):
 
     def onStart(self):
         self.database.connect('postgres', '1')
-        # self.fill_database()
+        self.fill_database()
 
         self.addForm("MAIN", MainList.MainListDisplay, title='Main menu')
         self.addForm("MUSICIANSLIST", MusiciansList.MusiciansListDisplay, title='Musicians')

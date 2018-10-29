@@ -70,8 +70,12 @@ class Database:
         self.cur.execute("""CREATE TABLE listeners_releases(
                                     listenerId INTEGER,
                                     releaseId INTEGER,
-                                    FOREIGN KEY (listenerId) references listeners(id),
-                                    FOREIGN KEY (releaseId) references releases(id))""")
+                                    FOREIGN KEY (listenerId) references listeners(id) 
+                                    ON DELETE CASCADE
+                                    ON UPDATE CASCADE,
+                                    FOREIGN KEY (releaseId) references releases(id)
+                                    ON DELETE CASCADE
+                                    ON UPDATE CASCADE)""")
         self.conn.commit()
     #  endregion
 
@@ -175,9 +179,6 @@ class Database:
 
     #  region delete by id
     def delete_musician_by_id(self, id):
-        # self.cur.execute(f"""DELETE FROM listeners_releases WHERE releaseId IN (
-        #                         SEARCH id FROM releases WHERE id = '{id}'
-        #                      )""")
         self.cur.execute(f"DELETE FROM musicians WHERE id = '{id}';")
         self.conn.commit()
 

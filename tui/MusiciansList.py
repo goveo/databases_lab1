@@ -30,7 +30,8 @@ class MusiciansList(npyscreen.MultiLineAction):
     def when_delete_record(self, *args, **keywords):
         try:
             cur_id = self.values[self.cursor_line]["id"]
-            self.parent.parentApp.database.delete_musician_by_id(cur_id)
+            deleted = self.parent.parentApp.database.delete_musician_by_id(cur_id)
+            raise Exception(deleted)
         except Exception as e:
             self.parent.wMain.values = []
             self.parent.wMain.display()
